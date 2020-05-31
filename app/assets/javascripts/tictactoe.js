@@ -31,7 +31,7 @@ function checkWinner() {
 	// returns true when a player wins diagonally
 	// returns true when a player wins vertically
 	// returns false if no winning combination is present on the board
-	
+
 	$('td').text( (index, square) => board[index] = square);
 	let winCombinations = [
 	  [0, 1, 2],
@@ -58,7 +58,7 @@ function doTurn(square) {
 	updateState(square);
 	turn++;
 
-	if (checkWinner(turn) === true) { 
+	if (checkWinner(turn) === true) {
 		saveGame();
 		clearGame();
 	} else if (turn === 9) {
@@ -85,7 +85,7 @@ function attachListeners(){
 	if (this.innerHTML === "" && gameOver() === false) {
 		doTurn(this);
 	};
-	
+
 	});
 	$('#previous').on("click", function() {
 			previousGame();
@@ -106,7 +106,7 @@ function saveGame() {
     state[index] = square;
   });
 	var gameData = { state: state }
-	
+
   if (currentGame) {
     $.ajax({
       type: 'PATCH',
@@ -130,7 +130,7 @@ function previousGame() {
 
     	games.forEach(function(game) {
     		if (!list.includes(game.id)) {
-    			// iterate over each game button add an event listener to each button 
+    			// iterate over each game button add an event listener to each button
     		$("#games").append(`<button id="game-${game.id}" onClick="loadGame(${game.id})">${game['id']}</button><br>`);
     		};
     	});
