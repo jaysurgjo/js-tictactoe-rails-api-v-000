@@ -8,7 +8,7 @@ function attachListeners() {
 
   // show previous games
   $("#previous").click(function(event) {
-    previousGames() 
+    previousGames()
   })
 
   //save current game
@@ -17,7 +17,7 @@ function attachListeners() {
 
   })
 
-  $(document).on("click", "li", function(event){    
+  $(document).on("click", "li", function(event){
     var state = $(this).data("state").split(",")
     var id = $(this).data("id")
     loadBoard(state, id);
@@ -30,13 +30,13 @@ var turn = 0
 var currentGame = getBoard()
 var currentGameId = undefined
 var winningCombos = [
- [[0,0],[0,1],[0,2]], 
- [[1,0],[1,1],[1,2]], 
- [[2,0],[2,1],[2,2]], 
- [[0,0],[1,0],[2,0]], 
- [[0,1],[1,1],[2,1]], 
- [[0,2],[1,2],[2,2]], 
- [[0,0],[1,1],[2,2]], 
+ [[0,0],[0,1],[0,2]],
+ [[1,0],[1,1],[1,2]],
+ [[2,0],[2,1],[2,2]],
+ [[0,0],[1,0],[2,0]],
+ [[0,1],[1,1],[2,1]],
+ [[0,2],[1,2],[2,2]],
+ [[0,0],[1,1],[2,2]],
  [[2,0],[1,1],[0,2]]]
 
 function doTurn(event) {
@@ -73,14 +73,14 @@ function checkWinner() {
     if (tie()) {
       message("Tie game")
       gameOver = true
-      
+
       console.log("after tie(), before save()")
     }
   })
   return gameOver
 }
 
-function player(){ 
+function player(){
   if ((turn % 2) == 0) {
     return "X"
   } else {
@@ -107,7 +107,7 @@ function lastTurn(){
 function getBoard(){
   board = []
   $("tbody td").each(function(){
-    board.push(this.innerHTML)  
+    board.push(this.innerHTML)
   })
   return board
 }
@@ -200,9 +200,9 @@ function save(resetCurrentGameId) {
         $("#games").html("")
         if (savedGames.length > 0 ) {
           $("#games").append("<ul></ul>")
-          for (var key in savedGames) { 
+          for (var key in savedGames) {
             $("#games ul").append(`<li data-state= ${savedGames[key]["state"]} data-id = ${savedGames[key]["id"]}> ${savedGames[key]["id"]}</li>`)
           }
-        } 
+        }
       })
   }
